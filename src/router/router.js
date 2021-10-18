@@ -7,6 +7,8 @@ const routes = [
         patch: '/',
         redirect: '/pokemon'
     },
+
+    //Pokemon Layout
     {
         path: '/pokemon',
         name: 'pokemon',
@@ -41,6 +43,7 @@ const routes = [
     //DBZ layout
     {
         path: '/dbz',
+        name: 'dbz',
         component: () => import('../modules/dbz/layouts/DragonBallLayout.vue'),
         children: [
             {
@@ -59,7 +62,6 @@ const routes = [
             }
         ]
     },
-
     {
         path: '/:pathMatch(.*)*', 
         component: NotFoundPage
