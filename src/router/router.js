@@ -4,7 +4,7 @@ import ListPage from '../modules/pokemon/pages/ListPage.vue'
 import AboutPage from '../modules/pokemon/pages/AboutPage.vue'
 import PokemonPage from '../modules/pokemon/pages/PokemonPage.vue'
 
-import NotFoundPage from '../modules/shared/pages/NotFoundPage.vue'
+//import NotFoundPage from '../modules/shared/pages/NotFoundPage.vue'
 
 const routes = [
     {
