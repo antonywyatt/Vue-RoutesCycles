@@ -73,4 +73,43 @@ const router = createRouter({
     routes
 })
 
+/*// Guard Global - Síncrono
+router.beforeEach(( to, from, next ) => {
+    console.log({to, from, next})
+    //next()
+
+    const random = Math.random() * 100
+    if ( random > 50 ) {
+        console.log('auntenticado')
+        next()
+    } else {
+        console.log(random, 'bloqueado por el breforEach Guard')
+        next({name: 'pokemon-home'})
+    }
+})
+*/
+
+const canAccess = () => {
+    return new Promise( resolve => {
+
+        const random = Math.random() * 100
+        if ( random > 50 ) {
+            console.log('auntenticado - can Access')
+            resolve(true)
+        } else {
+            console.log(random, 'bloqueado por el breforEach Guard - canAccess')
+            resolve(false)
+        }
+    } )
+}
+
+router.beforeEach( async (to, from, next) => {
+    const authorized = await canAccess()
+    
+    authorized 
+        ? next()
+        : next({ name: 'pokemon-home' })
+})
+
+
 export default router
