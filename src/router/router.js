@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 import NotFoundPage from '../modules/shared/pages/NotFoundPage.vue'
+import isAuthenticatedGuard from './auth-guard'
 
 const routes = [
     {
@@ -44,6 +45,7 @@ const routes = [
     {
         path: '/dbz',
         name: 'dbz',
+        beforeEnter: [ isAuthenticatedGuard ],
         component: () => import('../modules/dbz/layouts/DragonBallLayout.vue'),
         children: [
             {
@@ -89,7 +91,7 @@ router.beforeEach(( to, from, next ) => {
 })
 */
 
-const canAccess = () => {
+/*const canAccess = () => {
     return new Promise( resolve => {
 
         const random = Math.random() * 100
@@ -109,7 +111,9 @@ router.beforeEach( async (to, from, next) => {
     authorized 
         ? next()
         : next({ name: 'pokemon-home' })
-})
+})*/
+
+
 
 
 export default router
